@@ -1,0 +1,138 @@
+SE - CALCOLO MATERIALI NAVE (Space Engineers 1)
+================================================
+Autore: Capitan Blooz  -  capitanblooz@gmail.com
+
+Questo programma legge il file di una nave (blueprint "bp.sbc") e calcola
+quanti componenti, lingotti e minerali servono per costruirla.
+
+
+COSA SERVE
+----------
+1. Space Engineers installato sul PC.
+2. Python 3 (gratuito): https://www.python.org/downloads/
+   Durante l'installazione spunta "Add Python to PATH" e lascia attive le
+   opzioni proposte. Non serve installare altro.
+
+
+COME SI AVVIA
+-------------
+Estrai lo zip in una cartella qualsiasi e fai doppio clic su:
+
+    se_gui.pyw
+
+Se non si apre niente, apri il Prompt dei comandi in quella cartella e scrivi:
+
+    python se_gui.py
+
+
+COME SI USA
+-----------
+1. DEFINIZIONI DI GIOCO - scegli una delle due modalità:
+   - Vanilla: usa solo il gioco base, senza mod. I blocchi che vengono da
+     una mod risultano "sconosciuti" e non vengono contati.
+   - Mondo salvato: scegli dall'elenco uno dei tuoi mondi (oppure usa
+     "Sfoglia..."). Il programma usa le mod di quel mondo e la sua efficienza
+     dell'assemblatore.
+     Le mod del mondo devono essere già scaricate sul tuo PC: basta aver
+     avviato il mondo almeno una volta. Le mod mancanti compaiono nella
+     scheda "Avvisi".
+   - Server online: SOLO PER IL CALCOLO. Usa le mod di un server su cui
+     hai giocato, lette dai log del gioco (devi esserci entrato almeno una
+     volta). L'efficienza dell'assemblatore del server non è nei log:
+     impostala tu al punto 3 (la vedi nelle informazioni del server).
+
+2. NAVE - scegli la blueprint dall'elenco oppure cerca il file bp.sbc con
+   "Sfoglia...". Le tue blueprint si trovano in:
+       %AppData%\SpaceEngineers\Blueprints\local\<nome nave>\bp.sbc
+   Puoi indicare anche quante navi vuoi costruire.
+
+3. PARAMETRI
+   - Efficienza assemblatore: 1 (realistico), 3 o 10. Se hai scelto un
+     mondo, il valore viene preso dal mondo.
+   - Resa raffinazione: "Raffineria" (normale) o "Altoforno"; puoi anche
+     scrivere un numero (es. 1,2).
+
+4. Premi "Calcola". Il primo calcolo con un mondo pieno di mod può
+   richiedere qualche secondo.
+
+
+I RISULTATI
+-----------
+- Riepilogo   tutti i totali in una pagina
+- Blocchi     i blocchi della nave e da dove viene la loro definizione
+- Componenti  pezzi necessari e lingotti per ciascun componente
+- Lingotti    kg di lingotti e il minerale che serve per produrli
+- Minerali    kg di minerale da estrarre
+- Avvisi      blocchi sconosciuti, materiali senza ricetta, mod mancanti
+- Log         dettagli tecnici del caricamento
+
+Clic sull'intestazione di una colonna per ordinarla.
+"Esporta CSV..." salva il risultato in un file da aprire con Excel.
+
+
+MONDO DI TEST LOCALE (scheda "Mondo di test locale (da server)")
+---------------------------------------------------------------
+Serve a provare le navi in locale con le stesse mod di un server online.
+Il gioco non salva sul PC la mappa dei server: il mondo creato avrà le
+stesse mod (nello stesso ordine) ma sarà vuoto, senza pianeti, basi o navi
+del server.
+
+1. Scegli il server (compaiono quelli in cui sei entrato almeno una volta).
+2. Scegli il nome del nuovo mondo e il modello del gioco ("Empty World" =
+   spazio vuoto; altri modelli hanno pianeti).
+3. Parametri del server: sono già compilati con i valori vanilla del gioco.
+   Se vuoi riprodurre il server, copia i valori dalla sua schermata
+   informazioni. Le impostazioni non elencate si possono aggiungere in
+   "Altre impostazioni" (una per riga, es. EnableDrones=false).
+   "Ripristina valori vanilla" rimette i valori predefiniti.
+4. Mod: sono tutte incluse; clicca su una mod per escluderla (es. quelle
+   che servono solo al server o che generano navi NPC).
+5. "Entra subito con la tuta" (attivo di default): crea il tuo personaggio
+   in tuta, così entri direttamente nel mondo invece di finire nella
+   schermata di respawn. Parti nel punto iniziale del modello (con Star
+   System: nello spazio, sopra la Terra). Il tuo giocatore viene
+   riconosciuto dai tuoi salvataggi esistenti.
+6. Premi "Crea mondo di test". Poi avvia il gioco, "Carica partita", scegli
+   il nuovo mondo e incolla la nave dal menu blueprint (F10).
+
+Il programma non modifica né sovrascrive mai i salvataggi esistenti: crea
+sempre una cartella nuova in %AppData%\SpaceEngineers\Saves\<il tuo ID>.
+
+
+SE IL GIOCO NON VIENE TROVATO
+-----------------------------
+In fondo alla parte alta della finestra ci sono due campi:
+- "Gioco": la cartella di Space Engineers, per esempio
+      C:\Program Files (x86)\Steam\steamapps\common\SpaceEngineers
+- "Mod workshop": la cartella delle mod scaricate, per esempio
+      C:\Program Files (x86)\Steam\steamapps\workshop\content\244850
+Impostali una volta: il programma se li ricorda.
+
+
+NOTE
+----
+- I numeri sono una stima basata sulle ricette del gioco e delle mod.
+  I blocchi indicati come "sconosciuti" NON sono inclusi nei totali.
+- Il programma legge soltanto i file del gioco e non modifica nulla.
+- File inclusi: se_gui.pyw / se_gui.py (finestra), se_calc.py (calcolo),
+  LICENSE.txt (licenza).
+  Uso avanzato da riga di comando:  python se_calc.py --help
+
+
+LICENZA E RESPONSABILITA'
+-------------------------
+Copyright (c) 2026 Capitan Blooz <capitanblooz@gmail.com>
+
+Questo è software open source distribuito con licenza MIT (testo completo
+in LICENSE.txt): puoi usarlo, copiarlo, modificarlo e ridistribuirlo
+liberamente, anche a scopo commerciale, purché mantieni l'indicazione
+dell'autore e della licenza.
+
+Il programma è fornito "così com'è", SENZA ALCUNA GARANZIA. L'autore non è
+responsabile di danni, perdite o errori derivanti dal suo uso: i risultati
+sono stime da verificare in gioco.
+
+Space Engineers è un marchio di Keen Software House. Questo è un progetto
+amatoriale indipendente, non affiliato né approvato da Keen Software House.
+
+Segnalazioni e suggerimenti: capitanblooz@gmail.com

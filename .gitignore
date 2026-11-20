@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.pyc
+
+# Impostazioni personali dell'interfaccia (percorsi locali)
+se_gui_settings.json
+
+# Pacchetto di distribuzione (si allega alle Release di GitHub)
+*.zip
+
+# File di prova locali
+bp.sbc
+*.csv
